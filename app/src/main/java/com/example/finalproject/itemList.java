@@ -1,17 +1,31 @@
 package com.example.finalproject;
 
 public class itemList {
-    private String itemname;
+    private String groceryNames;
+    private double groceryPrice;
 
-    public itemList(String itemname){
-        this.itemname = itemname;
+    public itemList(String groceryNames, double groceryPrice){
+        this.groceryNames = groceryNames;
+        this.groceryPrice = groceryPrice;
     }
 
-    public String getItemname() {
-        return itemname;
+    public itemList() {
+
     }
 
-    public void setItemname(String itemname){
-        this.itemname = itemname;
+    public String getGroceryNames() {
+        return groceryNames;
+    }
+
+    public double getGroceryPrice() {
+        return groceryPrice;
+    }
+
+    public void setGroceryNames(String groceryNames){
+        this.groceryNames = groceryNames;
+    }
+
+    public void setGroceryPrice(double groceryPrice) {
+        this.groceryPrice = groceryPrice;
     }
 }

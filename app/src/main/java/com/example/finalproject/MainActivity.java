@@ -10,23 +10,23 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     GridView items;
+    DBHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        items = findViewById(R.id.itemsGrid);
-        ArrayList<itemList> itemListArrayList = new ArrayList<itemList>();
+        myDb = new DBHelper(this, null, null, 1);
 
-        itemListArrayList.add(new itemList("Apples"));
-        itemListArrayList.add(new itemList("Oranges"));
-        itemListArrayList.add(new itemList("Bananas"));
-        itemListArrayList.add(new itemList("Pear"));
-        itemListArrayList.add(new itemList("Watermelon"));
-        itemListArrayList.add(new itemList("Avacado"));
+        addData();
+    }
 
-        ItemAdapter adapter = new ItemAdapter(this, itemListArrayList);
-        items.setAdapter(adapter);
+    public void addData(){
+        itemList item1 = new itemList("apple", 10);
+        itemList item2= new itemList("oranges", 4);
+
+        myDb.insertData(item1);
+        myDb.insertData(item2);
     }
 }
