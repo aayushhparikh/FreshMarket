@@ -7,58 +7,56 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/header"
+        android:orientation="horizontal"
+        android:id="@+id/header2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:background="#ebb134"
-        android:gravity="center"
         android:padding="20dp">
 
         <Button
-            android:id="@+id/signin2"
+            android:id="@+id/signin3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign in"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"
             android:textColor="@color/white"
             android:background="@android:color/transparent"
             android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/freshMarket"
+            android:id="@+id/freshMarket2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fresh Market"
+            android:text="Cart"
+            android:layout_marginLeft="65dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/cart2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cart"
-            android:layout_gravity="center"
-            android:layout_marginLeft="60dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="110dp"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/shopping_cart"/>
+            android:drawableLeft="@drawable/shopping_bag" />
     </LinearLayout>
 
 
 
-    <GridView
+    <ListView
         android:id="@+id/itemsGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header"
+        android:layout_below="@id/header2"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="6dp"
         android:horizontalSpacing="6dp"
         android:numColumns="2"
-        android:verticalSpacing="6dp"></GridView>
+        android:verticalSpacing="6dp"></ListView>
 
 
 </RelativeLayout>

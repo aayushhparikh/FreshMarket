@@ -2,8 +2,11 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -13,6 +16,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<String> Arrayofname = new ArrayList<String>();
 
+    Button cart, signin;
+
     GridView items;
     DBHelper myDb;
 
@@ -21,19 +26,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        cart = findViewById(R.id.cart);
+        signin = findViewById(R.id.signin2);
+
         myDb = new DBHelper(this, null, null, 1);
 
-        readItems();
-        addData();
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Cart.class);
+                startActivity(intent);
+            }
+        });
 
-        myDb.getAllItems();
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginPage.class);
+                startActivity(intent);
+            }
+        });
 
-        items = (GridView) findViewById(R.id.itemsGrid);
+        //readItems();
+        //addData();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Arrayofname);
-
-        items.setAdapter(adapter);
+//        myDb.getAllItems();
+//
+//        items = (GridView) findViewById(R.id.itemsGrid);
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Arrayofname);
+//
+//        items.setAdapter(adapter);
     }
+
 
     public void readItems() {
         List<itemList> itemLists = myDb.getAllItems();
@@ -47,4 +73,5 @@ public class MainActivity extends AppCompatActivity {
         myDb.insertData(item1);
         myDb.insertData(item2);
     }
+
 }
