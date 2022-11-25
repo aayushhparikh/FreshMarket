@@ -1,8 +1,11 @@
 package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,26 +14,39 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static ArrayList<String> Arrayofname = new ArrayList<String>();
+    RecyclerView recyclerView;
 
     Button cart, signin;
 
+    ArrayList<String> grocery_name;
+
     GridView items;
     DBHelper myDb;
+    private Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recyclerView = findViewById(R.id.recyclerview);
+
 
         cart = findViewById(R.id.cart);
         signin = findViewById(R.id.signin2);
 
         myDb = new DBHelper(this, null, null, 1);
+        grocery_name = new ArrayList<>();
+
+        StoreArrayData();
+
+        adapter = new Adapter(MainActivity.this, this, grocery_name);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,23 +63,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //readItems();
-        //addData();
-
-//        myDb.getAllItems();
-//
-//        items = (GridView) findViewById(R.id.itemsGrid);
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Arrayofname);
-//
-//        items.setAdapter(adapter);
     }
 
-
-    public void readItems() {
-        List<itemList> itemLists = myDb.getAllItems();
-
+    void StoreArrayData() {
+        Cursor c = myDb.getAllItems();
+        while (c.moveToNext()) {
+            grocery_name.add(c.getString(1));
+        }
     }
 
     public void addData(){

@@ -61,25 +61,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<itemList> getAllItems() {
-        List<itemList> itemLists = new ArrayList<itemList>();
+    Cursor getAllItems() {
+        String query = "SELECT * FROM " + table_name;
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        String query = "SELECT  * FROM " + table_name;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c = db.rawQuery(query, null);
-
-        if (c.moveToFirst()) {
-            do {
-                itemList itemList = new itemList();
-                itemList.setGroceryNames(c.getString(1));
-
-                String name = c.getString(1);
-            } while (c.moveToFirst());
-
+        Cursor c = null;
+        if(db != null) {
+            c = db.rawQuery(query, null);
         }
-        return itemLists;
+        return c;
     }
+
 }
 
 
