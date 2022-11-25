@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 public class itemList {
+    int id;
     private String groceryNames;
     private double groceryPrice;
 
@@ -9,8 +10,22 @@ public class itemList {
         this.groceryPrice = groceryPrice;
     }
 
-    public itemList() {
+    public itemList(int id, String groceryNames, double groceryPrice){
+        this.id = id;
+        this.groceryNames = groceryNames;
+        this.groceryPrice = groceryPrice;
+    }
 
+    public itemList(){
+
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getGroceryNames() {

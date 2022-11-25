@@ -59,4 +59,10 @@
         android:numColumns="2"
         android:verticalSpacing="6dp"></GridView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dbview"
+        android:layout_marginTop="150dp"/>
+
 </RelativeLayout>
