@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPrefs.init(getApplicationContext());
 
 
         //defining variables
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
 
     @Override
     public void addToCartClicked(View view, int position) {
-        Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+        SharedPrefs.putString("oranges", grocery_name.get(position));
+        Toast.makeText( getApplicationContext(), "Added to cart!", Toast.LENGTH_SHORT).show();
     }
 }

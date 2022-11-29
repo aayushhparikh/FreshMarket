@@ -45,13 +45,24 @@
             android:drawableLeft="@drawable/shopping_bag" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/intent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header2"/>
+
+    <TextView
+        android:id="@+id/intent2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header2"/>
 
 
     <ListView
         android:id="@+id/itemsGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header2"
+        android:layout_below="@id/intent"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="6dp"
         android:horizontalSpacing="6dp"
