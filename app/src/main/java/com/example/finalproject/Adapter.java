@@ -22,13 +22,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private Context context;
     private Activity activity;
     private ArrayList grocery_name;
+    private ArrayList price_num;
     private Listener listener;
 
 
-    Adapter(Activity activity, Context context, ArrayList grocery_name, Listener listener) {
+    Adapter(Activity activity, Context context, ArrayList grocery_name, Listener listener, ArrayList price_num) {
         this.activity = activity;
         this.context = context;
         this.grocery_name = grocery_name;
+        this.price_num = price_num;
         this.listener = listener;
     }
 
@@ -43,6 +45,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name_id.setText(String.valueOf(grocery_name.get(position)));
+        holder.price_id.setText("$" +String.valueOf(price_num.get(position)));
 
     }
 
@@ -52,7 +55,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView name_id;
+        TextView name_id, price_id;
         LinearLayout mainLayout;
         Button addToCart;
         Listener listener;
@@ -60,6 +63,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView, Listener listener) {
             super(itemView);
             name_id = itemView.findViewById(R.id.name_id);
+            price_id = itemView.findViewById(R.id.price_id);
             mainLayout = itemView.findViewById(R.id.mainLayout);
             addToCart = itemView.findViewById(R.id.addtocart);
             this.listener = listener;

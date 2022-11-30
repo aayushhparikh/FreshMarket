@@ -29,6 +29,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/price_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="price"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@+id/name_id"
+                app:layout_constraintTop_toBottomOf="@+id/name_id" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
     Button cart, signin, addtocart;
 
     ArrayList<String> grocery_name;
+    ArrayList<Double> price_num;
 
     GridView items;
     DBHelper myDb;
@@ -38,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPrefs.init(getApplicationContext());
-
-
         //defining variables
         recyclerView = findViewById(R.id.recyclerview);
 
@@ -50,13 +48,15 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
 
         myDb = new DBHelper(this, null, null, 1);
         grocery_name = new ArrayList<>();
+        price_num = new ArrayList<>();
 
         //addData();
 
         //calling store array data to store db values into array
         StoreArrayData();
+        StorePriceData();
 
-        adapter = new Adapter(MainActivity.this, this, grocery_name, this);
+        adapter = new Adapter(MainActivity.this, this, grocery_name, this, price_num);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
@@ -84,6 +84,13 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
         }
     }
 
+    void StorePriceData() {
+        Cursor c = myDb.getAllItems();
+        while (c.moveToNext()) {
+            price_num.add(c.getDouble(2));
+        }
+    }
+
     public void addData() {
         cartItems items1 = new cartItems("apple", 10, 0);
         myDb.insertCartData(items1);
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
 
     @Override
     public void addToCartClicked(View view, int position) {
-        cartItems items = new cartItems(grocery_name.get(position), 10, 0);
+        cartItems items = new cartItems(grocery_name.get(position), price_num.get(position), 0);
 
         myDb.insertCartData(items);
         Toast.makeText( getApplicationContext(), "Added to cart!", Toast.LENGTH_SHORT).show();

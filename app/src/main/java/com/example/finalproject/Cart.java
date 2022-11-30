@@ -17,9 +17,7 @@ import java.util.ArrayList;
 public class Cart extends AppCompatActivity {
 
     Button cart2, signin3, clear;
-
     RecyclerView recyclerView2;
-
     ArrayList<String> grocery_name2;
 
     DBHelper myDb;
@@ -72,14 +70,6 @@ public class Cart extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void addData() {
-        cartItems items1 = new cartItems("apple", 10, 0);
-        cartItems items2 = new cartItems("oranges", 4, 0);
-
-        myDb.insertCartData(items1);
-        myDb.insertCartData(items2);
     }
 
         void StoreArrayData() {
