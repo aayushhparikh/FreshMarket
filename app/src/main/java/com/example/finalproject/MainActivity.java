@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
         myDb = new DBHelper(this, null, null, 1);
         grocery_name = new ArrayList<>();
 
+        //addData();
+        cartItems items1 = new cartItems("apple", 10, 0);
+        myDb.insertCartData(items1);
+
         //calling store array data to store db values into array
         StoreArrayData();
 
@@ -73,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
                 startActivity(intent);
             }
         });
-
     }
 
     void StoreArrayData() {
@@ -93,7 +96,9 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
 
     @Override
     public void addToCartClicked(View view, int position) {
-        SharedPrefs.putString("oranges", grocery_name.get(position));
+        cartItems items = new cartItems(grocery_name.get(position), 10, 0);
+
+        myDb.insertCartData(items);
         Toast.makeText( getApplicationContext(), "Added to cart!", Toast.LENGTH_SHORT).show();
     }
 }
