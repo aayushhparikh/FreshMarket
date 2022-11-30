@@ -19,6 +19,7 @@ public class Cart extends AppCompatActivity {
     Button cart2, signin3, clear;
     RecyclerView recyclerView2;
     ArrayList<String> grocery_name2;
+    ArrayList<Double> price_num2;
 
     DBHelper myDb;
     private CartAdapter adapter2;
@@ -36,12 +37,14 @@ public class Cart extends AppCompatActivity {
         recyclerView2 = findViewById(R.id.recyclerview2);
         myDb = new DBHelper(this, null, null, 1);
         grocery_name2 = new ArrayList<>();
+        price_num2  = new ArrayList<>();
 
         //addData();
 
         StoreArrayData();
+        StorePriceData();
 
-        adapter2 = new CartAdapter(Cart.this, this, grocery_name2);
+        adapter2 = new CartAdapter(Cart.this, this, grocery_name2, price_num2);
         recyclerView2.setAdapter(adapter2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(Cart.this));
 
@@ -78,4 +81,13 @@ public class Cart extends AppCompatActivity {
                 grocery_name2.add(c.getString(1));
             }
         }
+
+        void StorePriceData() {
+            Cursor c = myDb.getALLCartItems();
+            while (c.moveToNext()) {
+                price_num2.add(c.getDouble(2));
+            }
+        }
+
+
     }

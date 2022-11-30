@@ -16,12 +16,13 @@ import java.util.ArrayList;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>{
     private Context context2;
     private Activity activity2;
-    private ArrayList grocery_name2;
+    private ArrayList grocery_name2, price_num2;
 
-    CartAdapter(Activity activity2, Context context2, ArrayList grocery_name2) {
+    CartAdapter(Activity activity2, Context context2, ArrayList grocery_name2, ArrayList price_num2) {
         this.activity2 = activity2;
         this.context2 = context2;
         this.grocery_name2 = grocery_name2;
+        this.price_num2 = price_num2;
     }
 
     @NonNull
@@ -35,6 +36,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder2 holder, int position) {
         holder.name_id2.setText(String.valueOf(grocery_name2.get(position)));
+        holder.price_id2.setText("$" +String.valueOf(price_num2.get(position)));
 
     }
 
@@ -44,12 +46,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>
     }
 
     public class MyViewHolder2 extends RecyclerView.ViewHolder{
-        TextView name_id2;
+        TextView name_id2, price_id2;
         LinearLayout mainLayout2;
 
         public MyViewHolder2(@NonNull View itemView) {
             super(itemView);
             name_id2 = itemView.findViewById(R.id.name_id2);
+            price_id2 = itemView.findViewById(R.id.price_id2);
             mainLayout2 = itemView.findViewById(R.id.mainLayout2);
         }
     }

@@ -21,8 +21,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     private Context context;
     private Activity activity;
-    private ArrayList grocery_name;
-    private ArrayList price_num;
+    private ArrayList grocery_name, price_num;
     private Listener listener;
 
 
@@ -46,7 +45,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name_id.setText(String.valueOf(grocery_name.get(position)));
         holder.price_id.setText("$" +String.valueOf(price_num.get(position)));
-
     }
 
     @Override

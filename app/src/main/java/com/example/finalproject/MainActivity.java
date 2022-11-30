@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
     ArrayList<String> grocery_name;
     ArrayList<Double> price_num;
 
-    GridView items;
     DBHelper myDb;
     private Adapter adapter;
 
