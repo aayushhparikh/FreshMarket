@@ -29,7 +29,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>
     public MyViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context2);
         View view = inflater.inflate(R.layout.cart_items, parent, false);
-        return new CartAdapter.MyViewHolder2(view);
+        return new MyViewHolder2(view);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>
         public MyViewHolder2(@NonNull View itemView) {
             super(itemView);
             name_id2 = itemView.findViewById(R.id.name_id2);
-            mainLayout2 = itemView.findViewById(R.id.name_id2);
+            mainLayout2 = itemView.findViewById(R.id.mainLayout2);
         }
     }
 }

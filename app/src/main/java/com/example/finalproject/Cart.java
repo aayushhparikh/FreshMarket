@@ -16,9 +16,10 @@ import java.util.ArrayList;
 
 public class Cart extends AppCompatActivity {
 
-    Button cart2, signin3;
-    TextView intent, intent2;
+    Button cart2, signin3, clear;
+
     RecyclerView recyclerView2;
+
     ArrayList<String> grocery_name2;
 
     DBHelper myDb;
@@ -32,6 +33,7 @@ public class Cart extends AppCompatActivity {
 
         cart2 = findViewById(R.id.cart2);
         signin3 = findViewById(R.id.signin3);
+        clear = findViewById(R.id.clear);
 
         recyclerView2 = findViewById(R.id.recyclerview2);
         myDb = new DBHelper(this, null, null, 1);
@@ -40,7 +42,6 @@ public class Cart extends AppCompatActivity {
         //addData();
 
         StoreArrayData();
-
 
         adapter2 = new CartAdapter(Cart.this, this, grocery_name2);
         recyclerView2.setAdapter(adapter2);
@@ -58,6 +59,15 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Cart.this, LoginPage.class);
+                startActivity(intent);
+            }
+        });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDb.deleteCartItems();
+                Intent intent = new Intent(Cart.this, Cart.class);
                 startActivity(intent);
             }
         });

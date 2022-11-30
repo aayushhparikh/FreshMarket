@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
         grocery_name = new ArrayList<>();
 
         //addData();
-        cartItems items1 = new cartItems("apple", 10, 0);
-        myDb.insertCartData(items1);
 
         //calling store array data to store db values into array
         StoreArrayData();
@@ -87,11 +85,8 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
     }
 
     public void addData() {
-        itemList item1 = new itemList("apple", 10);
-        itemList item2 = new itemList("oranges", 4);
-
-        myDb.insertData(item1);
-        myDb.insertData(item2);
+        cartItems items1 = new cartItems("apple", 10, 0);
+        myDb.insertCartData(items1);
     }
 
     @Override

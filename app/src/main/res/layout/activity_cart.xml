@@ -56,7 +56,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/header2"/>
+        android:layout_below="@id/header2"
+        android:layout_above="@id/clear"/>
+
+    <Button
+        android:id="@+id/clear"
+        android:text="Clear Cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>

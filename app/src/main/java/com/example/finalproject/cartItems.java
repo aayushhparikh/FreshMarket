@@ -4,12 +4,12 @@ public class cartItems {
     int id2;
     private String groceryNames2;
     private Double groceryPrice2;
-    private Double groceryQuantity;
+    private Double groceryQuantitynumber;
 
-    public cartItems(String groceryNames2, double groceryPrice2, double groceryQuantity){
+    public cartItems(String groceryNames2, double groceryPrice2, double groceryQuantitynumber){
         this.groceryNames2 = groceryNames2;
         this.groceryPrice2 = groceryPrice2;
-        this.groceryQuantity = groceryQuantity;
+        this.groceryQuantitynumber = groceryQuantitynumber;
     }
 
     public cartItems(){
@@ -24,8 +24,8 @@ public class cartItems {
         return groceryPrice2;
     }
 
-    public Double getGroceryQuantity() {
-        return groceryQuantity;
+    public Double getGroceryQuantitynumber() {
+        return groceryQuantitynumber;
     }
 
     public void setGroceryNames2(String groceryNames2) {
@@ -36,7 +36,7 @@ public class cartItems {
         this.groceryPrice2 = groceryPrice2;
     }
 
-    public void setGroceryQuantity(Double groceryQuantity) {
-        this.groceryQuantity = groceryQuantity;
+    public void setGroceryQuantity(Double groceryQuantitynumber) {
+        this.groceryQuantitynumber = groceryQuantitynumber;
     }
 }

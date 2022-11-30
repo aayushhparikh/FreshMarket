@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String col_id2 = "id";
     public static final String col_name2 = "groceryNames2";
     public static final String col_price2 = "groceryPrice2";
-    public static final String col_quantity = "groceryQuantity";
+    public static final String col_quantity = "groceryQuantitynumber";
 
     public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DBNAME, factory, version);
@@ -85,7 +85,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(col_name2, cartItems.getGroceryNames2());
         values.put(col_price2, cartItems.getGroceryPrice2());
-        values.put(col_quantity, cartItems.getGroceryQuantity());
+        values.put(col_quantity, cartItems.getGroceryQuantitynumber());
 
         SQLiteDatabase db = null;
         try {
@@ -116,6 +116,18 @@ public class DBHelper extends SQLiteOpenHelper {
             c = db.rawQuery(query, null);
         }
         return c;
+    }
+
+    public void deleteItems(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(table_name, null, null);
+        db.close();
+    }
+
+    public void deleteCartItems(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(table_name2, null, null);
+        db.close();
     }
 
 }
