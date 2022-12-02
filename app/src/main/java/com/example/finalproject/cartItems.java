@@ -6,7 +6,7 @@ public class cartItems {
     private Double groceryPrice2;
     private Double groceryQuantitynumber;
 
-    public cartItems(String groceryNames2, double groceryPrice2, double groceryQuantitynumber){
+    public cartItems(String groceryNames2, double groceryPrice2,double groceryQuantitynumber){
         this.groceryNames2 = groceryNames2;
         this.groceryPrice2 = groceryPrice2;
         this.groceryQuantitynumber = groceryQuantitynumber;

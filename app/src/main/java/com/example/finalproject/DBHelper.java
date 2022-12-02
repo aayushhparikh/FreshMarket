@@ -130,6 +130,20 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int updateCartItems(Double id, int quantityid){
+        ContentValues values = new ContentValues();
+        values.put(col_quantity, quantityid);
+        SQLiteDatabase db = null;
+        int i = 0;
+        try{
+            db = this.getWritableDatabase();
+            i = db.update(table_name2, values, col_id2 + "=" + id, null);
+        } finally {
+            db.close();
+        }
+        return i;
+    }
+
 }
 
 

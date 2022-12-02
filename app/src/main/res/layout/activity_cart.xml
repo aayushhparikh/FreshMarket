@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:id="@+id/header2"
         android:layout_width="match_parent"
@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign in"
+            android:layout_alignParentLeft="true"
             android:textColor="@color/white"
             android:background="@android:color/transparent"
             android:textSize="15dp"
@@ -30,6 +31,8 @@
             android:layout_height="wrap_content"
             android:text="Cart"
             android:layout_marginLeft="65dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="25dp"
@@ -40,10 +43,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="110dp"
             android:background="@android:color/transparent"
             android:drawableLeft="@drawable/shopping_bag" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/intent"
@@ -55,16 +59,41 @@
         android:id="@+id/recyclerview2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/header2"
-        android:layout_above="@id/clear"/>
+        android:layout_above="@id/footer"
+        android:layout_marginTop="10dp" />
 
-    <Button
-        android:id="@+id/clear"
-        android:text="Clear Cart"
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:background="#ebb134"
+        android:layout_alignParentBottom="true"
+        android:padding="20dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/price"
+            android:text="Price: "
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:id="@+id/checkout"
+            android:text="Checkout"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/clear"
+            android:text="Clear Cart"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
+
