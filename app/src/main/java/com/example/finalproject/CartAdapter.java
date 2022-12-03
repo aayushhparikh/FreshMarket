@@ -24,9 +24,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>
     private ArrayList grocery_name2, price_num2;
     private Add add;
     private Subtract subtract;
+    int quantity_num;
+
+    DBHelper mydb;
     //private Subtract subtract;
 
-    CartAdapter(Activity activity2, Context context2, ArrayList grocery_name2, ArrayList price_num2,ArrayList quantity_id, Add add, Subtract subtract) {
+    CartAdapter(Activity activity2, Context context2, ArrayList grocery_name2, ArrayList price_num2,ArrayList quantity_id, Add add, Subtract subtract, int quantity_num) {
         this.activity2 = activity2;
         this.context2 = context2;
         this.grocery_name2 = grocery_name2;
@@ -34,6 +37,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>
         this.quantity_id = quantity_id;
         this.add = add;
         this.subtract = subtract;
+        this.quantity_num = quantity_num;
     }
 
     @NonNull
@@ -47,9 +51,30 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder2>
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder2 holder, int position) {
         holder.name_id2.setText(String.valueOf(grocery_name2.get(position)));
-        holder.price_id2.setText("$" +String.valueOf(price_num2.get(position)));
-        holder.quantity_id.setText(String.valueOf(quantity_id.get(position)));
+        holder.price_id2.setText("$" + String.valueOf(price_num2.get(position)));
+        holder.quantity_id.setText(String.valueOf(quantity_num));
+
+        holder.add1.setOnClickListener(new View.OnClickListener() {
+            int i = quantity_num;
+
+            @Override
+            public void onClick(View v) {
+                i++;
+                holder.quantity_id.setText(String.valueOf(i));
+                quantity_num = i;
+                //mydb.updateCartItems("55", 5);
+            }
+        });
+
+        holder.minus1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity_num--;
+                holder.quantity_id.setText(String.valueOf(quantity_num));
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
         grocery_name = new ArrayList<>();
         price_num = new ArrayList<>();
 
-        //addData();
+        addData();
 
         //calling store array data to store db values into array
         StoreArrayData();
@@ -91,8 +91,21 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
     }
 
     public void addData() {
-        cartItems items1 = new cartItems("apple", 10, 0);
-        myDb.insertCartData(items1);
+        itemList items1 = new itemList("Apple", 3.41);
+        itemList items2 = new itemList("Orange", 4.33);
+        itemList items3 = new itemList("Pineapple", 3.97);
+        itemList items4 = new itemList("Avacado", 2.41);
+        itemList items5 = new itemList("Grapes", 5.56);
+        itemList items6 = new itemList("Pears", 3.41);
+        itemList items7 = new itemList("Lemons", 2.41);
+
+        myDb.insertData(items1);
+        myDb.insertData(items2);
+        myDb.insertData(items3);
+        myDb.insertData(items4);
+        myDb.insertData(items5);
+        myDb.insertData(items6);
+        myDb.insertData(items7);
     }
 
     @Override

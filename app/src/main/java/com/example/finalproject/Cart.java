@@ -23,7 +23,7 @@ public class Cart extends AppCompatActivity {
     ArrayList<Double> quantity_id;
     ArrayList<Double> price_num2;
 
-    int i;
+    int quantity_num;
 
     DBHelper myDb;
     private CartAdapter adapter2;
@@ -56,9 +56,11 @@ public class Cart extends AppCompatActivity {
 
         updatePrice();
 
+        //myDb.updateCartItems(55, 5);
+
 //        StoreQuantityData(i);
 
-        adapter2 = new CartAdapter(Cart.this, this, grocery_name2, price_num2, quantity_id, this::add1, this::minus1);
+        adapter2 = new CartAdapter(Cart.this, this, grocery_name2, price_num2, quantity_id, this::add1, this::minus1, quantity_num);
         recyclerView2.setAdapter(adapter2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(Cart.this));
 
@@ -115,10 +117,12 @@ public class Cart extends AppCompatActivity {
         }
 
         public void add1(View view, int position) {
-            myDb.updateCartItems(50 + quantity_id.get(position), i++);
+        quantity_num++;
+            //myDb.updateCartItems(quantity_id.get(position), quantity_num);
+//            myDb.updateCartItems(50 + quantity_id.get(position), i++);
             Toast.makeText(getApplicationContext(), "add 1", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Cart.this, Cart.class);
-            startActivity(intent);
+//            Intent intent = new Intent(Cart.this, Cart.class);
+//            startActivity(intent);
         }
 
 

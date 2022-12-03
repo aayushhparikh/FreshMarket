@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class LoginPage extends AppCompatActivity {
     EditText email, password;
     Button creatone, signin;
-    LoginDBHelper DB;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class LoginPage extends AppCompatActivity {
         password = findViewById(R.id.password);
         signin = findViewById(R.id.signin);
         creatone = findViewById(R.id.createone);
-        DB = new LoginDBHelper(this);
+        DB = new DBHelper(this, null, null, 1);
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override

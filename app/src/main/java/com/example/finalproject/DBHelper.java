@@ -56,14 +56,15 @@ public class DBHelper extends SQLiteOpenHelper {
         //create tables
         db.execSQL(createTable);
         db.execSQL(createTable2);
+        db.execSQL("create table users(email TEXT primary key, password TEXT)");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop table " + table_name + ";");
         db.execSQL("drop table " + table_name2 + ";");
-
-
+        db.execSQL("drop table if exists users");
     }
 
     public void insertData(itemList itemList) {
@@ -144,6 +145,36 @@ public class DBHelper extends SQLiteOpenHelper {
         return i;
     }
 
+    public Boolean insertData(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("email", email);
+        values.put("password", password);
+        long result = db.insert("users", null, values);
+        if(result ==  -1)
+            return false;
+        else
+            return true;
+    }
+
+    public Boolean checkemail(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select * from users where email=?", new String[]{email});
+        if (c.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+
+    public Boolean checkemailpassword(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select * from users where email=? and password=?", new String[]{email, password});
+        if (c.getCount()>0)
+            return true;
+        else
+            return false;
+    }
 }
 
 

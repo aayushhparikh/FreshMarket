@@ -14,7 +14,7 @@ public class SignInPage extends AppCompatActivity {
 
     EditText email, password, repassword;
     Button signUpButton;
-    LoginDBHelper DB;
+    DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class SignInPage extends AppCompatActivity {
 
         signUpButton = findViewById(R.id.signin2);
 
-        DB = new LoginDBHelper(this);
+        DB = new DBHelper(this, null, null, 1);
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
