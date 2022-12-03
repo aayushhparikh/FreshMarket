@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
         grocery_name = new ArrayList<>();
         price_num = new ArrayList<>();
 
-        addData();
+        //addData();
 
         //calling store array data to store db values into array
         StoreArrayData();
