@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String col_id2 = "id";
     public static final String col_name2 = "groceryNames2";
     public static final String col_price2 = "groceryPrice2";
-    public static final String col_quantity = "groceryQuantitynumber";
+    public static final String col_quantity = "groceryQuantitynumbernumbernumber";
 
     public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DBNAME, factory, version);
@@ -42,13 +42,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //create table 1
         String createTable = "CREATE TABLE " + table_name + "(" +
-                col_id + " Integer PRIMARY KEY AUTOINCREMENT," +
+                col_id + " Integer PRIMARY KEY," +
                 col_name + " TEXT," +
                 col_price + " number DEFAULT 0)" + ";";
 
         //create table 2
         String createTable2 = "CREATE TABLE " + table_name2 + "(" +
-                col_id2 + " Integer PRIMARY KEY AUTOINCREMENT," +
+                col_id2 + " Integer PRIMARY KEY," +
                 col_name2 + " TEXT," +
                 col_price2 + " number DEFAULT 0, " +
                 col_quantity + "number DEFAULT 0) " + ";";
@@ -131,7 +131,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public int updateCartItems(Double id, int quantityid){
+    public int updateCartItems(int id, int quantityid){
         ContentValues values = new ContentValues();
         values.put(col_quantity, quantityid);
         SQLiteDatabase db = null;
