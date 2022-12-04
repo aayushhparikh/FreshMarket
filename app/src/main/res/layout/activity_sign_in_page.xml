@@ -36,6 +36,7 @@
         android:hint="Password"
         android:layout_below="@id/email2"
         android:id="@+id/password2"
+        android:inputType="textPassword"
         android:layout_margin="20dp"
         android:textColor="@color/white"
         android:backgroundTint="@color/black"
@@ -49,6 +50,7 @@
         android:layout_below="@id/password2"
         android:id="@+id/password3"
         android:layout_margin="20dp"
+        android:inputType="textPassword"
         android:textColor="@color/white"
         android:backgroundTint="@color/black"
         android:padding="20dp">
