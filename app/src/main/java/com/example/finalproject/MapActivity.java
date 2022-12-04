@@ -49,10 +49,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Location mLastLocation;
         Marker mCurrLocationMarker;
         FusedLocationProviderClient mFusedLocationClient;
-        Button settime, back;
+        Button settime, back, confirmlocation;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
+            SharedPrefs.init(getApplicationContext());
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_map);
 
@@ -64,12 +65,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mapFrag.getMapAsync(this);
             settime = findViewById(R.id.settime);
             back = findViewById(R.id.back);
+            confirmlocation = findViewById(R.id.confirmLocation);
 
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(MapActivity.this, Cart.class);
                     startActivity(intent);
+                }
+            });
+
+            confirmlocation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MapActivity.this, Checkout.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Location Confirmed", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -221,8 +232,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                //settime.setText("" + hourOfDay + minute);
-
+                SharedPrefs.putString("time", "" + hourOfDay + ":" + minute);
             }
         }
 
@@ -243,8 +253,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         @Override
-        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            SharedPrefs.putString("date", "" + year + "/" + month + "/" + day);
         }
     }
 

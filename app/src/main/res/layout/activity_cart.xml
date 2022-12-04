@@ -11,7 +11,7 @@
         android:id="@+id/header2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ebb134"
+        android:background="#4aa564"
         android:padding="20dp">
 
         <Button
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#ebb134"
+        android:background="#4aa564"
         android:orientation="horizontal"
         android:padding="20dp">
 
@@ -92,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:backgroundTint="#323a45"
             android:text="Checkout" />
 
         <Button
@@ -99,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:backgroundTint="#323a45"
             android:text="Clear Cart" />
 
     </RelativeLayout>

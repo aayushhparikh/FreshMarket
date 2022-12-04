@@ -17,6 +17,7 @@ public class LoginPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPrefs.init(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
@@ -31,6 +32,8 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View view) {
                 String emailid = email.getText().toString();
                 String passid = password.getText().toString();
+
+                SharedPrefs.putString("user", "" + emailid);
                 if(TextUtils.isEmpty(emailid) || TextUtils.isEmpty(passid))
                     Toast.makeText(LoginPage.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                 else{

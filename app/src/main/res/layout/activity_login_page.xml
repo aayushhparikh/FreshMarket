@@ -52,6 +52,7 @@
         android:layout_centerHorizontal="true"
         android:text="Sign in"
         android:textSize="20dp"
+        android:backgroundTint="#323a45"
         android:textStyle="bold"></Button>
 
     <TextView

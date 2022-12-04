@@ -45,6 +45,7 @@
                 android:layout_marginRight="20dp"
                 android:text="Add to cart"
                 android:textSize="10dp"
+                android:backgroundTint="#4773aa"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

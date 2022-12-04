@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +33,7 @@ public class Cart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPrefs.init(getApplicationContext());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
@@ -157,6 +159,7 @@ public class Cart extends AppCompatActivity {
             sum += price_num2.get(i) * quantities.get(i);
 
             price.setText(String.format("$%.2f", sum));
+            SharedPrefs.putString("sum","" + sum);
         }
     }
 }

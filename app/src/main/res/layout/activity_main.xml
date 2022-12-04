@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="#ebb134"
+        android:background="#4aa564"
         android:gravity="center"
         android:padding="20dp">
 
@@ -47,11 +47,21 @@
             android:drawableLeft="@drawable/shopping_cart"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/welcomeuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textSize="25dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/header"/>
+        android:layout_below="@id/welcomeuser"/>
 
 </RelativeLayout>

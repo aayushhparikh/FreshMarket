@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
     RecyclerView recyclerView;
 
     Button cart, signin, addtocart;
+    TextView welcomeuser;
+    String welcome;
 
     ArrayList<String> grocery_name;
     ArrayList<Double> price_num;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPrefs.init(getApplicationContext());
 
         //defining variables
         recyclerView = findViewById(R.id.recyclerview);
@@ -44,12 +47,15 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
         cart = findViewById(R.id.cart);
         signin = findViewById(R.id.signin2);
         addtocart = findViewById(R.id.addtocart);
+        welcomeuser = findViewById(R.id.welcomeuser);
 
         myDb = new DBHelper(this, null, null, 1);
         grocery_name = new ArrayList<>();
         price_num = new ArrayList<>();
 
         //addData();
+        welcome = SharedPrefs.getString("user", "");
+        welcomeuser.setText("Welcome " + welcome.split("@")[0]);
 
         //calling store array data to store db values into array
         StoreArrayData();
