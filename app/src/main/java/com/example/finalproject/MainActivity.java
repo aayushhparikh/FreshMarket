@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener 
                 startActivity(intent);
             }
         });
+
     }
 
     void StoreArrayData() {

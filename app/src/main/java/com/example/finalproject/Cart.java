@@ -98,6 +98,14 @@ public class Cart extends AppCompatActivity {
             }
         });
 
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cart.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     void StoreArrayData() {
